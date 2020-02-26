@@ -9,7 +9,11 @@
             <p>{{ post.content | strip_html | truncatewords: 50 }}</p>
         </section>
         <div class="post-meta">
-            <time datetime="{{ post.date | date_to_long_string }}">{{ post.date | date_to_long_string }}</time>
+            <div class="author-image">
+                {% avatar user=author.github size=30 %}
+            </div>
+            <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">{{ author.name }}</h4>
+            on <time datetime="{{ post.date | date_to_long_string }}">{{ post.date | date_to_long_string }}</time>
         </div>
     </div>
 </article>
