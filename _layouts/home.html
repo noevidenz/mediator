@@ -26,6 +26,7 @@ layout: default
 
     <div class="cf frame">
         {% for post in paginator.posts %}
+            {% assign author = site.authors | where: 'short_name', post.author | first %}
             {% include post-feed-item.html %}
         {% endfor %}
     </div>
