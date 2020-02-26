@@ -1,0 +1,13 @@
+<h5 class="index-headline featured"><span>Written by</span></h5>
+<section class="author">
+    <div class="author-image">
+        {% avatar user=author.github size=80 %}
+    </div>
+    <h4>{{ author.name }}</h4>
+    <p class="bio">{{ author.position }}</p>
+    {% include author-social-links.html %}
+    <hr>
+    <p class="published">
+        Published <time datetime="{{ page.date | date: " %F %R " }}">{{ page.date | date_to_string }}</time>
+    </p>
+</section>

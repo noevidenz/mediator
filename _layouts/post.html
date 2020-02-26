@@ -1,6 +1,7 @@
 ---
 layout: default
 ---
+{% assign author = site.authors | where: 'short_name', page.author | first %}
 
 <main class="content" role="main">
     <article class="post">
@@ -15,13 +16,11 @@ layout: default
             <div class="post-meta">
                 <h1 class="post-title">{{ page.title }}</h1>
                 <div class="cf post-meta-text">
-                    <div class="author-image"
-                         style="background-image: url({{ site.author_image | prepend: site.baseurl }})">Blog Logo
+                    <div class="author-image">
+                        {% avatar user=author.github size=30 %}
                     </div>
-                    <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">{{
-                        site.author }}</h4>
-                    on
-                    <time datetime="{{ page.date | date: " %F %R" }}">{{ page.date | date_to_string }}</time>
+                    <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">{{ author.name }}</h4>
+                    on <time datetime="{{ page.date | date: " %F %R " }}">{{ page.date | date_to_string }}</time>
                 </div>
                 <div style="text-align:center">
                     <a href="#topofpage" class="topofpage"><i class="fa fa-angle-down"></i></a>
@@ -33,10 +32,11 @@ layout: default
             <div class="post-meta">
                 <h1 class="post-title">{{ page.title }}</h1>
                 <div class="cf post-meta-text">
-                    <div class="author-image" style="background-image: url({{ site.author_image | prepend: site.baseurl }})"></div>
-                    <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">{{ page.author }}</h4>
-                    on
-                    <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date_to_string }}</time>
+                    <div class="author-image">
+                        {% avatar user=author.github size=30 %}
+                    </div>
+                    <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">{{ author.name }}</h4>
+                    on <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date_to_string }}</time>
                 </div>
             </div>
         </div>
@@ -54,42 +54,22 @@ layout: default
         <footer class="post-footer">
             <section class="share">
                 {% for social in site.social %}
-                {% if social.share_url != null %}
-                <a class="icon-{{ social.icon }}"
-                   href="{{ social.share_url }}{% if social.share_title %}{{ social.share_title }}{{page.title | cgi_escape}}{% endif %}{{ social.share_link }}{{site.url}}{{site.baseurl}}{{page.id}}"
-                   onclick="window.open(this.href, '{{ social.icon }}-share', 'width=550,height=255');return false;">
-                    <i class="fa fa-{{ social.icon }}"></i><span class="hidden">{{ social.icon }}</span>
-                </a>
-                {% endif %}
+                    {% if social.share_url != null %}
+                    <a class="icon-{{ social.icon }}"
+                       href="{{ social.share_url }}{% if social.share_title %}{{ social.share_title }}{{page.title | cgi_escape}}{% endif %}{{ social.share_link }}{{site.url}}{{site.baseurl}}{{page.id}}"
+                       onclick="window.open(this.href, '{{ social.icon }}-share', 'width=550,height=255');return false;">
+                        <i class="fa fa-{{ social.icon }}"></i><span class="hidden">{{ social.icon }}</span>
+                    </a>
+                    {% endif %}
                 {% endfor %}
             </section>
         </footer>
         <div class="bottom-teaser cf">
             <div class="isLeft">
-                <h5 class="index-headline featured"><span>Written by</span></h5>
-                <section class="author">
-                    <div class="author-image"
-                         style="background-image: url({{ site.author_image | prepend: site.baseurl }})"></div>
-                    <h4>{{ site.author }}</h4>
-                    <p class="bio">{{ author.bio }}</p>
-                    <hr>
-                    <p class="published">Published
-                        <time datetime="{{ page.date | date: " %F %R " }}">{{ page.date | date_to_string }}</time></p>
-                </section>
+                {% include author-credit.html %}
             </div>
             <div class="isRight">
-                <h5 class="index-headline featured"><span>Supported by</span></h5>
-                <footer class="site-footer">
-                    <section class="poweredby">Proudly published with <a href="http://jekyllrb.com"> Jekyll</a>
-                    </section>
-                    <a class="subscribe" href="{{ "/feed.xml" | prepend: site.baseurl }}"> <span class="tooltip"> <i
-                        class="fa fa-rss"></i> You should subscribe to my feed.</span></a>
-                    <div class="inner">
-                        <section class="copyright">All content copyright <a href="{{site.url}}/">{{site.author}}</a>
-                            &copy; {{ site.time | date: '%Y' }}<br>All rights reserved.
-                        </section>
-                    </div>
-                </footer>
+                {% include post-footer-right.html %}
             </div>
         </div>
         {% include disqus.html %}

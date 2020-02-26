@@ -5,8 +5,11 @@
     <h1 class="blog-title">{{ site.title }}</h1>
     <h2 class="blog-description">{{ site.description }}</h2>
     <div class="custom-links">
-        {% for page in site.nav_pages %}
-            <a href="{{ page.url }}">{{page.title}}</a>
+        {% for item in site.data.navigation %}
+            <a href="{{ item.path }}">{{item.title}}</a>
+            {% unless forloop.last %}
+                &nbsp;&nbsp;·&nbsp;&nbsp;
+            {% endunless %}
         {% endfor %}
     </div>
 </header>

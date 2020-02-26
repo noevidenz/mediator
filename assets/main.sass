@@ -296,7 +296,7 @@ body
       float: left
       background-size: cover
       border-radius: 100%
-      text-indent: -9999px
+      overflow: hidden
     .author-name
       display: inline
     .post-meta-text
@@ -344,7 +344,7 @@ body
       float: left
       background-size: cover
       border-radius: 100%
-      text-indent: -9999px
+      overflow: hidden
     .author-name
       display: inline
     .post-meta-text
@@ -449,6 +449,13 @@ body
   .bottom-teaser
     padding: 50px 0
     font-family: $font-sans
+    .social-links
+      padding-left: 100px
+      .social-link
+        font-size: 20px
+        color: #bbb
+        &:hover
+          color: black
     hr
       border: 0
       padding: 0
@@ -479,7 +486,7 @@ body
         float: left
         background-size: cover
         border-radius: 100%
-        text-indent: -9999px
+        overflow: hidden
       h4
         font-size: 18px
         line-height: 1.1

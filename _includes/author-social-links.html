@@ -1,0 +1,13 @@
+<div class="social-links">
+    {% if author.twitter %}
+    <a href="https://twitter.com/{{ author.twitter }}" target="_blank" class="social-link" title="{{ author.twitter }} on Github"><i class="fa fa-twitter"></i></a>
+    {% endif %}
+
+    {% if author.github %}
+    <a href="https://github.com/{{ author.github }}" target="_blank" class="social-link" title="{{ author.github }} on Github"><i class="fa fa-github"></i></a>
+    {% endif %}
+
+    {% if author.facebook %}
+    <a href="https://facebook.com/{{ author.facebook }}" target="_blank" class="social-link" title="{{ author.facebook }} on Github"><i class="fa fa-facebook"></i></a>
+    {% endif %}
+</div>

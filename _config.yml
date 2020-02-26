@@ -1,7 +1,10 @@
 # Build settings
 plugins:
   - jemoji
+  - jekyll-avatar
+  - jekyll-feed
   - jekyll-paginate
+  - jekyll-seo-tag
 
 # Site settings
 title: "Mediator"
@@ -15,10 +18,6 @@ float_logo: true # true, false (default)
 
 # blog cover
 cover: "/assets/images/cA4aKEIPQrerBnp1yGHv_IMG_9534-3-2.jpg"
-
-nav_pages:
-  - title: About
-    url: /about/
 
 name: 'Dirk Fabisch'
 author: 'Dirk Fabisch'
@@ -65,3 +64,6 @@ social:
 #    share_url:
 #    share_title:
 #    share_link:
+
+collections:
+  authors:
